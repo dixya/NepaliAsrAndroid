@@ -1,24 +1,21 @@
 package org.nepalitools.asr.androidapp;
 
-import android.os.AsyncTask;
-
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.concurrent.*;
 
 /**
+ * This class makes server calls in a different single dedicated thread.
+ * This is needed because Android recommends us to run network calls in a different thread than the main thread.
+ *
  * Created by dixya on 8/6/17.
  */
 public class NetworkOperation{
 
     ExecutorService executorService = Executors.newSingleThreadExecutor();
-
-    private Exception exception;
-
+    
     protected String getMethodCall(final String urlString) {
         Callable<String> callable = new Callable<String>() {
             @Override
@@ -41,7 +38,7 @@ public class NetworkOperation{
         };
         Future<String> future = executorService.submit(callable);
         try {
-            return future.get(10, TimeUnit.SECONDS);
+            return future.get(30, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

@@ -7,13 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText textContent;
