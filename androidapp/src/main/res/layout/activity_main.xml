@@ -2,172 +2,84 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-        xmlns:tools="http://schemas.android.com/tools"
-
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent"
-
-        tools:context=".MainActivity" >
-<TextView
-
-android:id="@+id/notificationText"
-
-android:layout_width="wrap_content"
-
-android:layout_height="wrap_content"
-
-android:layout_marginTop="10dp"
-
-android:text="Recording Point: -"
-
-android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
-
-<ImageView
-
-android:id="@+id/micImage"
-
-android:layout_width="60dp"
-
-android:layout_height="60dp"
-
-android:layout_below="@+id/notificationText"
-
-android:layout_centerHorizontal="true"
-
-android:layout_marginTop="20dp"
-
-android:src="@android:drawable/presence_audio_online" />
-
-    <LinearLayout  android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
-
-    android:layout_marginTop="10dp"
-
-    android:layout_below="@+id/micImage"
-
-    android:id="@+id/linear1"
-
-    android:orientation="horizontal" >
-
-
-
-    <Button
-
-    android:id="@+id/start"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content"
-
-    android:text="start" />
-
-
-
-    <Button
-
-    android:id="@+id/stop"
-
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-
-    android:layout_marginLeft="10dp"
-
-    android:enabled="false"
-
-    android:text="stop" />
-
-
-</LinearLayout>
-
-    <LinearLayout  android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
-
-    android:layout_marginTop="10dp"
-
-    android:layout_below="@+id/linear1"
-    android:id="@+id/linear2"
-
-    android:orientation="horizontal" >
-
-
-
-    <Button
-
-    android:id="@+id/play"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-
-    android:enabled="false"
-    android:text="play" />
-
-
-    <Button
-
-    android:id="@+id/stopPlay"
-
-    android:layout_width="wrap_content"
-
-    android:layout_height="wrap_content"
-
-    android:enabled="false"
-
-    android:layout_marginLeft="10dp"
-
-    android:text="stop playing" />
-
-</LinearLayout>
-
-    <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/activity_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            tools:context="org.nepalitools.asr.androidapp.MainActivity">
-
-        <EditText android:id="@+id/textContent"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:paddingBottom="20px"
-                  android:text="Enter your text here."
-                  android:gravity="top"
-        />
-
-        <Button android:id="@+id/submitButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:text="Submit"
-        />
-
-
-    </LinearLayout>
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:id="@+id/messageText"
-                android:textColor="#000000"
-                android:textStyle="bold"
-        />
-    </LinearLayout>
-
-
-
-
-
-
-
-
-
+				xmlns:tools="http://schemas.android.com/tools"
+
+				android:layout_width="match_parent"
+
+				android:layout_height="match_parent"
+
+				tools:context=".MainActivity">
+	<TextView
+			android:id="@+id/notificationText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="Start Recording."
+			android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
+	<LinearLayout android:layout_width="match_parent"
+				  android:layout_height="wrap_content"
+				  android:layout_marginTop="10dp"
+				  android:layout_below="@+id/textContent"
+				  android:id="@+id/linear1"
+				  android:orientation="horizontal">
+
+
+		<Button
+				android:id="@+id/start"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Start Record"/>
+
+
+		<Button
+				android:id="@+id/stop"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="10dp"
+				android:enabled="false"
+				android:text="Stop Record"/>
+	</LinearLayout>
+
+	<LinearLayout android:layout_width="match_parent"
+				  android:layout_height="wrap_content"
+				  android:layout_marginTop="10dp"
+				  android:layout_below="@+id/linear1"
+				  android:id="@+id/linear2"
+				  android:orientation="horizontal">
+
+
+		<Button
+				android:id="@+id/play"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:enabled="false"
+				android:text="Play"/>
+
+		<Button
+				android:id="@+id/stopPlay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:enabled="false"
+				android:layout_marginLeft="10dp"
+				android:text="stop playing"/>
+	</LinearLayout>
+
+		<EditText android:id="@+id/textContent"
+				  android:layout_width="match_parent"
+				  android:layout_height="wrap_content"
+				  android:layout_below="@id/notificationText"
+				  android:paddingBottom="20px"
+				  android:hint="Enter your text here."
+				  android:gravity="top"
+		/>
+
+		<Button android:id="@+id/submitButton"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/linear2"
+				android:paddingTop="20px"
+				android:text="Submit"
+		/>
 </RelativeLayout>
