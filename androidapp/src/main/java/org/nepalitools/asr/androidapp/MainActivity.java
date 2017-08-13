@@ -17,6 +17,7 @@ import static android.widget.Toast.*;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String SERVER_URL = "http://nepaliasr.us-west-2.elasticbeanstalk.com";
 
     EditText textContent;
     Button submitButton;
@@ -42,15 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initObjects();
         initRecorder();
-
         initListeners();
-
-
     }
 
 
     private void initObjects() {
         textContent = (EditText) findViewById(R.id.textContent);
+        // call server for text
+        textContent.setText(getCall(SERVER_URL + "/text"));
         submitButton = (Button) findViewById(R.id.submitButton);
         startRecordBtn = (Button) findViewById(R.id.start);
         stopRecordBtn = (Button) findViewById(R.id.stop);
@@ -160,33 +160,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void getCall(String urlString) {
+    private String getCall(String urlString) {
         try {
             String response = new NetworkOperation().getMethodCall(urlString);
-            notificationText.setText(response.substring(0, 20));
+            return response;
         } catch (Exception e) {
-            makeText(this, "Exception in calling url: " + urlString, LENGTH_LONG);
+            makeText(this, "Exception in calling url: " + urlString, LENGTH_LONG).show();
             e.printStackTrace();
+            return "Exception in calling get";
         }
     }
 
-    private void upload(String urlString, String fileLocation) {
+    private String upload(String urlString, String fileLocation) {
         try {
             String response = new NetworkOperation().uploadFile(urlString, fileLocation);
-            notificationText.setText(response.substring(0, 20));
+            return response;
         } catch (Exception e) {
             makeText(getApplicationContext(), "Exception in calling url: " + urlString, LENGTH_LONG).show();
             e.printStackTrace();
+            return "Exception in calling upload.";
         }
     }
 
     @Override
     public void onClick(View view) {
         if (view == submitButton) {
-            //getCall("http://nepaliasr.us-west-2.elasticbeanstalk.com/ping");
-            upload("http://nepaliasr.us-west-2.elasticbeanstalk.com/data", outputFile);
+            //getCall(SERVER_URL + "/ping");
+            String responseText = upload(SERVER_URL + "/data", outputFile);
             submitButton.setEnabled(false);
             startRecordBtn.setEnabled(true);
+            notificationText.setText(responseText);
             makeText(getApplicationContext(), "Upload completed", LENGTH_LONG).show();
         }
     }
