@@ -8,7 +8,7 @@
 
 				android:layout_height="match_parent"
 
-				tools:context=".MainActivity">
+				tools:context=".RecordingActivity">
 	<TextView
 			android:id="@+id/notificationText"
 			android:layout_width="match_parent"
