@@ -15,8 +15,8 @@ public class Session {
         prefs = PreferenceManager.getDefaultSharedPreferences(cntx);
     }
 
-    public void setUserName(String usename) {
-        prefs.edit().putString("usename", usename).commit();
+    public void setUserName(String email) {
+        prefs.edit().putString("usename", email).commit();
        // prefsCommit();
     }
 

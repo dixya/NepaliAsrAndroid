@@ -17,6 +17,8 @@ import butterknife.InjectView;
 public class LogInActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    String email;
+    String password;
 
     @InjectView(R.id.input_email) EditText _emailText;
     @InjectView(R.id.input_password) EditText _passwordText;
@@ -64,14 +66,14 @@ public class LogInActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+         email = _emailText.getText().toString();
+         password = _passwordText.getText().toString();
+        startRecord(email,password);
+
 
         // TODO: Implement your own authentication logic here.
-        if(email=="ldixya@gmail.com" && password=="1dixya") {
            // onActivityResult(0,Activity.RESULT_OK, Intent);
-            startRecord(email,password);
-        }
+
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -85,10 +87,10 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void startRecord(String email, String password) {
-        Intent intent = new Intent(getApplicationContext(), RecordingActivity.class);
+        Intent intent = new Intent(LogInActivity.this, RecordingActivity.class);
         intent.putExtra("email",email);
         intent.putExtra("password",password);
-        setResult(Activity.RESULT_OK,intent);
+        LogInActivity.this.startActivity(intent);
     }
 
 

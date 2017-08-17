@@ -1,5 +1,7 @@
 package org.nepalitools.asr.androidapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -38,15 +40,20 @@ public class RecordingActivity extends AppCompatActivity implements View.OnClick
     private TextView notificationText;
 
     private Session session;//global variable
+    String email;
+    String password;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Context cntx;
-        //  session = new Session(cntx); //in oncreate
-        //  session.setUserName("dixya");
-        //  setContentView(R.layout.login_main);
+        Context cntx=getApplicationContext();
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
+        password = intent.getStringExtra("password");
+
+        session = new Session(cntx); //in oncreate
+         session.setUserName(email);
         setContentView(R.layout.activity_record);
         initObjects();
         initRecorder();
@@ -121,7 +128,8 @@ public class RecordingActivity extends AppCompatActivity implements View.OnClick
         startRecordBtn.setEnabled(false);
         submitButton.setEnabled(false);
         stopRecordBtn.setEnabled(true);
-        makeText(getApplicationContext(), "Start recording...",LENGTH_SHORT).show();
+        makeText(getApplicationContext(),"Welcome "+ email , LENGTH_SHORT).show();
+        makeText(getApplicationContext(), "Start recording",LENGTH_SHORT).show();
     }
 
 

@@ -5,6 +5,7 @@ package org.nepalitools.asr.androidapp;
  */
 
         import android.app.ProgressDialog;
+        import android.content.Intent;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
         import android.util.Log;
@@ -69,6 +70,10 @@ public class SignupActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         // TODO: Implement your own signup logic here.
+        Intent intent = new Intent(SignupActivity.this, LogInActivity.class);
+       // intent.putExtra("email",email);
+       // intent.putExtra("password",password);
+        SignupActivity.this.startActivity(intent);
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
